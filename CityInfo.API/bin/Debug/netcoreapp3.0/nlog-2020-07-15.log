@@ -1,0 +1,147 @@
+2020-07-15 23:50:59.4960|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 POST http://localhost:57643/api/cities application/json 51
+2020-07-15 23:50:59.4960|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware|No CORS policy found for the specified request.
+2020-07-15 23:50:59.4960|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CityInfo.API)'
+2020-07-15 23:50:59.5075|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "CreatePointOfInterest", controller = "PointsOfInterest"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreatePointOfInterest(CityInfo.API.Models.PointsOfInterest.CreatePointOfInterestInput) on controller CityInfo.API.Controllers.PointsOfInterestController (CityInfo.API).
+2020-07-15 23:50:59.5759|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:50:59.6163|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (33ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2020-07-15 23:50:59.6922|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (70ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [PointsOfInterests] ([Description], [Name], [cityId])
+VALUES (@p0, @p1, @p2);
+SELECT [Id]
+FROM [PointsOfInterests]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2020-07-15 23:50:59.6968|INFO|CityInfo.API.Services.impl.PointsOfInterestService|CreatePointOfInterest - PointOfInterest-ი წარმატებით შექიმნა 
+2020-07-15 23:50:59.6968|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 200
+2020-07-15 23:50:59.6968|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CityInfo.API) in 191.5063ms
+2020-07-15 23:50:59.6968|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CityInfo.API)'
+2020-07-15 23:50:59.6968|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 211.83440000000002ms 200 
+2020-07-15 23:51:30.9349|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 GET http://localhost:57643/api/cities  
+2020-07-15 23:51:30.9349|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API)'
+2020-07-15 23:51:30.9583|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "GetCities", controller = "Cities"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCities() on controller CityInfo.API.Controllers.CitiesController (CityInfo.API).
+2020-07-15 23:51:30.9738|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:51:30.9899|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2020-07-15 23:51:30.9899|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'CityInfo.API.Models.City.GetCitiesOutput'.
+2020-07-15 23:51:31.0088|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 45.4943ms
+2020-07-15 23:51:31.0088|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API)'
+2020-07-15 23:51:31.0088|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 79.7966ms 200 application/json; charset=utf-8
+2020-07-15 23:51:37.1276|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 GET http://localhost:57643/api/cities/1  
+2020-07-15 23:51:37.1315|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API)'
+2020-07-15 23:51:37.1315|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "GetCity", controller = "Cities"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCity(Int32) on controller CityInfo.API.Controllers.CitiesController (CityInfo.API).
+2020-07-15 23:51:37.1458|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:51:37.2094|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [p].[Id], [p].[Description], [p].[Name], [p].[cityId]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+    FROM [Cities] AS [c]
+    WHERE [c].[Id] = @__cityId_0
+) AS [t]
+LEFT JOIN [PointsOfInterests] AS [p] ON [t].[Id] = [p].[cityId]
+ORDER BY [t].[Id], [p].[Id]
+2020-07-15 23:51:37.2094|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'CityInfo.API.Models.City.GetCityOutput'.
+2020-07-15 23:51:37.2271|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) in 85.8953ms
+2020-07-15 23:51:37.2271|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API)'
+2020-07-15 23:51:37.2271|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 105.4945ms 200 application/json; charset=utf-8
+2020-07-15 23:51:51.8679|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 DELETE http://localhost:57643/api/cities/1/pointsofinterest/9  
+2020-07-15 23:51:51.8679|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware|No CORS policy found for the specified request.
+2020-07-15 23:51:51.8679|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:51.8845|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "DeletePointOfInterest", controller = "PointsOfInterest"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeletePointOfInterest(Int32, Int32) on controller CityInfo.API.Controllers.PointsOfInterestController (CityInfo.API).
+2020-07-15 23:51:51.8845|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:51:51.9229|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32), @__pointsOfInterestId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[cityId]
+FROM [PointsOfInterests] AS [p]
+LEFT JOIN [Cities] AS [c] ON [p].[cityId] = [c].[Id]
+WHERE ([c].[Id] = @__cityId_0) AND ([p].[Id] = @__pointsOfInterestId_1)
+2020-07-15 23:51:51.9494|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [PointsOfInterests]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2020-07-15 23:51:51.9494|INFO|CityInfo.API.Services.impl.PointsOfInterestService|DeletePointOfInterest - ქალაქზე 1 PointOfInterest -ი 9წარმატებით წაიშალა
+2020-07-15 23:51:51.9602|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2020-07-15 23:51:51.9602|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 75.7831ms
+2020-07-15 23:51:51.9602|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:51.9602|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 101.7149ms 204 
+2020-07-15 23:51:54.7007|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 DELETE http://localhost:57643/api/cities/1/pointsofinterest/10  
+2020-07-15 23:51:54.7007|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware|No CORS policy found for the specified request.
+2020-07-15 23:51:54.7007|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:54.7114|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "DeletePointOfInterest", controller = "PointsOfInterest"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeletePointOfInterest(Int32, Int32) on controller CityInfo.API.Controllers.PointsOfInterestController (CityInfo.API).
+2020-07-15 23:51:54.7114|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:51:54.7114|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32), @__pointsOfInterestId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[cityId]
+FROM [PointsOfInterests] AS [p]
+LEFT JOIN [Cities] AS [c] ON [p].[cityId] = [c].[Id]
+WHERE ([c].[Id] = @__cityId_0) AND ([p].[Id] = @__pointsOfInterestId_1)
+2020-07-15 23:51:54.7288|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [PointsOfInterests]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2020-07-15 23:51:54.7288|INFO|CityInfo.API.Services.impl.PointsOfInterestService|DeletePointOfInterest - ქალაქზე 1 PointOfInterest -ი 10წარმატებით წაიშალა
+2020-07-15 23:51:54.7288|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2020-07-15 23:51:54.7288|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 23.060200000000002ms
+2020-07-15 23:51:54.7395|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:54.7395|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 42.0614ms 204 
+2020-07-15 23:51:56.5001|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 DELETE http://localhost:57643/api/cities/1/pointsofinterest/11  
+2020-07-15 23:51:56.5001|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware|No CORS policy found for the specified request.
+2020-07-15 23:51:56.5074|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:56.5074|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "DeletePointOfInterest", controller = "PointsOfInterest"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeletePointOfInterest(Int32, Int32) on controller CityInfo.API.Controllers.PointsOfInterestController (CityInfo.API).
+2020-07-15 23:51:56.5074|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:51:56.5268|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32), @__pointsOfInterestId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[cityId]
+FROM [PointsOfInterests] AS [p]
+LEFT JOIN [Cities] AS [c] ON [p].[cityId] = [c].[Id]
+WHERE ([c].[Id] = @__cityId_0) AND ([p].[Id] = @__pointsOfInterestId_1)
+2020-07-15 23:51:56.5368|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [PointsOfInterests]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2020-07-15 23:51:56.5368|INFO|CityInfo.API.Services.impl.PointsOfInterestService|DeletePointOfInterest - ქალაქზე 1 PointOfInterest -ი 11წარმატებით წაიშალა
+2020-07-15 23:51:56.5368|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2020-07-15 23:51:56.5368|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 34.5065ms
+2020-07-15 23:51:56.5526|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:56.5526|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 56.445600000000006ms 204 
+2020-07-15 23:51:57.9198|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 DELETE http://localhost:57643/api/cities/1/pointsofinterest/12  
+2020-07-15 23:51:57.9198|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware|No CORS policy found for the specified request.
+2020-07-15 23:51:57.9267|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:57.9267|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "DeletePointOfInterest", controller = "PointsOfInterest"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeletePointOfInterest(Int32, Int32) on controller CityInfo.API.Controllers.PointsOfInterestController (CityInfo.API).
+2020-07-15 23:51:57.9267|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:51:57.9267|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32), @__pointsOfInterestId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Description], [p].[Name], [p].[cityId]
+FROM [PointsOfInterests] AS [p]
+LEFT JOIN [Cities] AS [c] ON [p].[cityId] = [c].[Id]
+WHERE ([c].[Id] = @__cityId_0) AND ([p].[Id] = @__pointsOfInterestId_1)
+2020-07-15 23:51:57.9472|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [PointsOfInterests]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2020-07-15 23:51:57.9472|INFO|CityInfo.API.Services.impl.PointsOfInterestService|DeletePointOfInterest - ქალაქზე 1 PointOfInterest -ი 12წარმატებით წაიშალა
+2020-07-15 23:51:57.9472|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2020-07-15 23:51:57.9472|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 22.925700000000003ms
+2020-07-15 23:51:57.9472|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API)'
+2020-07-15 23:51:57.9614|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 41.5043ms 204 
+2020-07-15 23:52:19.7646|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 GET http://localhost:57643/api/cities/1  
+2020-07-15 23:52:19.7646|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API)'
+2020-07-15 23:52:19.7724|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "GetCity", controller = "Cities"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCity(Int32) on controller CityInfo.API.Controllers.CitiesController (CityInfo.API).
+2020-07-15 23:52:19.7724|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 3.1.6 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 23:52:19.8081|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (24ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[Name], [p].[Id], [p].[Description], [p].[Name], [p].[cityId]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+    FROM [Cities] AS [c]
+    WHERE [c].[Id] = @__cityId_0
+) AS [t]
+LEFT JOIN [PointsOfInterests] AS [p] ON [t].[Id] = [p].[cityId]
+ORDER BY [t].[Id], [p].[Id]
+2020-07-15 23:52:19.8081|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'CityInfo.API.Models.City.GetCityOutput'.
+2020-07-15 23:52:19.8207|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) in 40.846000000000004ms
+2020-07-15 23:52:19.8207|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API)'
+2020-07-15 23:52:19.8207|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 65.2218ms 200 application/json; charset=utf-8

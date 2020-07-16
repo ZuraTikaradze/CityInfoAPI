@@ -1,0 +1,10 @@
+2020-07-16 20:13:03.6267|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-16 20:13:04.3005|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-07-16 20:13:04.3191|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-07-16 20:13:04.3191|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\admin\source\repos\CityInfo\CityInfo.API
+2020-07-16 20:13:04.4018|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 GET http://localhost:57643/  
+2020-07-16 20:13:04.5785|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 173.4742ms 404 text/plain
+2020-07-16 20:13:08.2723|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 GET http://localhost:57643/swagger/index.html  
+2020-07-16 20:13:08.3475|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 76.2094ms 200 text/html;charset=utf-8
+2020-07-16 20:13:09.1316|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/1.1 GET http://localhost:57643/swagger/v1/swagger.json  
+2020-07-16 20:13:09.2840|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished in 152.7448ms 200 application/json;charset=utf-8
